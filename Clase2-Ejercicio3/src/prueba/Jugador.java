@@ -47,10 +47,10 @@ public class Jugador {
 	}
 	
 	public String aCadena() {
-		System.out.println("Nombre: "+ this.nombre);
-		System.out.println("N° Camiseta: "+ this.nroCamiseta);
-		System.out.println("Posición: "+ this.posicion);
-		System.out.println("Goles convertidos: "+this.golesConvertidos);
-		System.out.println("Partidos jugados: "+this.partidosJugados);
+	    return "Nombre: " + this.nombre + "\n" +
+	            "N° Camiseta: " + this.nroCamiseta + "\n" +
+	            "Posición: " + this.posicion + "\n" +
+	            "Goles convertidos: " + this.golesConvertidos + "\n" +
+	            "Partidos jugados: " + this.partidosJugados;
 	}
 }
