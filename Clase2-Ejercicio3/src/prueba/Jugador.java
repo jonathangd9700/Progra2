@@ -7,9 +7,13 @@ public class Jugador {
 	private int golesConvertidos;
 	private int partidosJugados;
 	
-	public Jugador(String nom) {
-		this.nombre = nom;
-	}
+    public Jugador(String nombre, int nroCamiseta, int posicion) {
+        this.nombre = nombre;
+        this.nroCamiseta = nroCamiseta;
+        this.posicion = posicion;
+        this.golesConvertidos = 0;
+        this.partidosJugados = 0; 
+    }
 	//COMANDOS
 	public void aumentarGoles(int n){
 		this.golesConvertidos++;
