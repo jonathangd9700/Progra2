@@ -52,11 +52,18 @@ public class Equipo {
 		return (this.puntos*3)+this.pE;
 	}
 	
-	public Equipo mejorPuntaje(Equipos e) {
-		
+	public Equipo mejorPuntaje(Equipo e) {
+		if(this.puntos > e.puntos) {
+			return this;
+		}
+		return e;
 	}
 	
 	public Jugador capitanConMasGoles(Equipo e) {
-		
+		return this.capitan.jugConMasGoles(e.capitan);
+	}
+	
+	public String getNombre() {
+		return this.nombre;
 	}
 }
