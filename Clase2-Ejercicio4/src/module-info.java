@@ -4,5 +4,5 @@
 /**
  * 
  */
-module Clase4 {
+module EjercicioCuatro {
 }
