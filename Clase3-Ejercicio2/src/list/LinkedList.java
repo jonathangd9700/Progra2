@@ -26,11 +26,6 @@ public class LinkedList {
 		else {
 			n.setNext(head);
 			head = n;
-			for(int i = 0; i < size; i++) {
-				if (n.getNext() == null) {
-					last = n;
-				}
-			}
 		}
 		size++;
 	}
@@ -38,7 +33,6 @@ public class LinkedList {
 	public void agregarElementoInicio(int elemento) {
 		Node aux = new Node(elemento);
 		agregarElementoInicio(aux);
-		actual = aux;
 	}
 	
 	public void agregarElementoFinal(Node n) {
@@ -49,8 +43,7 @@ public class LinkedList {
 		}
 		else {
 			last.setNext(n);
-			last = n;
-			
+			last = n;		
 		}
 		size++;
 	}
@@ -58,14 +51,38 @@ public class LinkedList {
 	public void agregarElementoFinal(int elemento) {
 		Node aux = new Node(elemento);
 		agregarElementoFinal(aux);
-		actual = aux;
 	}
 	
 	public void eliminarPrimero() {
-		Node aux = head.getNext();
-		head.setNext(null);
-		head = aux;
-		size--;
+		 if (head == null) {
+			 System.out.println("No hay elementos en la lista para eliminar");
+		 }
+		 else {
+				Node aux = head.getNext();
+				head.setNext(null);
+				head = aux;
+				size--;
+		 }
+	}
+	
+	public void eliminarFinal() {
+			 if (head == null) {
+				 System.out.println("No hay elementos en la lista para eliminar");
+			 }
+			 if (head == last) { 
+			        head = null;
+			        last = null;
+			        size--;
+			    } else {
+			        Node nodo = head;
+			        while (nodo.getNext() != last) {
+			            nodo = nodo.getNext();
+			        }
+
+			        actual.setNext(null); 
+			        last = nodo; 
+			        size--;
+			    }
 	}
 	
 	public Node verActual() {
@@ -73,11 +90,16 @@ public class LinkedList {
 	}
 	
 	public void imprimirElementosNodos() {
-		Node actual = head;
-        
-        while (actual != null) {
-            System.out.println(actual.getElement());
-            actual = actual.getNext();
+		if (head == null) {
+			System.out.println("No hay elementos para imprimir");
+		}
+		else {
+			Node nodo = head;
+	        
+	        while (nodo != null) {
+	            System.out.println(nodo.getElement());
+	            nodo = nodo.getNext();	
+		}
 		}
 	}
 }
