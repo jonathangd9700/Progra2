@@ -3,11 +3,13 @@ package list;
 
 public class LinkedList {
 	private Node head;
+	private Node last;
 	private int size;
 	private Node actual;
 	
 	public LinkedList() {
 		head = null;
+		last = null;
 		size = 0;
 		actual = null;
 	}
@@ -17,8 +19,19 @@ public class LinkedList {
 	}
 	
 	public void agregarElementoInicio(Node n) {
-		n.setNext(head);
-		head = n;
+		if(head == null) {
+			head = n;
+			last = n;
+		}
+		else {
+			n.setNext(head);
+			head = n;
+			for(int i = 0; i < size; i++) {
+				if (n.getNext() == null) {
+					last = n;
+				}
+			}
+		}
 		size++;
 	}
 	
@@ -31,10 +44,13 @@ public class LinkedList {
 	public void agregarElementoFinal(Node n) {
 		//Si es el primer elemento head = null => head = n, 
 		if(head== null) {
-			head = n;	
+			head = n;
+			last = n;
 		}
 		else {
-			head.setNext(n);
+			last.setNext(n);
+			last = n;
+			
 		}
 		size++;
 	}

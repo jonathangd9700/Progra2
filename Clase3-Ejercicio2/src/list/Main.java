@@ -17,7 +17,7 @@ public class Main {
 		lista.agregarElementoInicio(1545);
 
 		System.out.println("Elemento de head: "+lista.getHeadElement());
-		lista.eliminarPrimero();
+		//lista.eliminarPrimero();
 		lista.imprimirElementosNodos();
 		
 		//System.out.println(lista.verActual().getElement());
