@@ -47,7 +47,7 @@ public class Main {
 		*/
 		
 		//DEJAR ESTE PARA LAS PRUEBAS SIGUIENTES
-		Ejercicio1 array2 = new Ejercicio1();
+		Ejercicio1 <Integer> array2 = new Ejercicio1<Integer>();
 		
 		
 		//BORRANDO ELEMENTO CON LA PILA VACIA
