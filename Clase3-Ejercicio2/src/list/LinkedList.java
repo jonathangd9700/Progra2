@@ -79,7 +79,7 @@ public class LinkedList {
 			            nodo = nodo.getNext();
 			        }
 
-			        actual.setNext(null); 
+			        nodo.setNext(null); 
 			        last = nodo; 
 			        size--;
 			    }
