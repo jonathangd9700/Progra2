@@ -1,4 +1,4 @@
-package ejercicio;
+package ejercicio5;
 
 public class PilaArreglo<T> implements Stack<T> {
 	private T[] array;
@@ -67,34 +67,4 @@ public class PilaArreglo<T> implements Stack<T> {
 		System.out.println("La pila está vacia");
 	}
 	}	
-	
-	//INVERTIR
-	//////////////////////////////////////////////////////-----------------------------------------------------------
-	
-	/*public void invertir(PilaArreglo pila) {
-		T[] array2;
-		array2 = (T[]) new Object[size];
-		int posicion = 0;	
-		for(int i = size-1; i>0;i--) {
-			array2[posicion] = (T) pila.array[i];
-			posicion++;
-		}
-		pila.array = array2;
-		}
-*/
-	public void invertir(PilaArreglo pila) {
-		T[] array2;
-		array2 = (T[]) new Object[size];
-		int posicion = 0;
-		while(size>0) {
-			T el = (T) pila.pop();
-			array2[posicion] = (T) el;
-			posicion++;
-		}
-	    for (int i = 0; i < posicion; i++) {
-	        pila.push(array2[i]);
-	    }
-	}
-		
-	}
-
+}
