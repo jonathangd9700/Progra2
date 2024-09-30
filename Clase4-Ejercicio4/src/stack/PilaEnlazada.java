@@ -52,8 +52,5 @@ public class PilaEnlazada<T> implements Stack<T> {
 	public int size() {
 		return size;
 	}
-	
-
-	
 }
 

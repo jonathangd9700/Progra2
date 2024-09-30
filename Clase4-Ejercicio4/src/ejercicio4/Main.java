@@ -40,21 +40,79 @@ public class Main {
 	
 	static void cargarColas(LinkedQueue cola) {
 		int cantidad = (int)(Math.random()*10);
-		
+		if(cantidad == 0) {
+			cantidad++;
+		}
 		for(int i = 0; i<cantidad;i++) {
 			int numero = (int) (Math.random()*10);
+
 			System.out.print(numero+"-");
 			cola.enqueue(numero);
 		}
 		System.out.println();
 	}
 	
+	static void ordenarPilas(PilaEnlazada<LinkedQueue> pila) {
+		PilaEnlazada<LinkedQueue> pilaAux = new PilaEnlazada<LinkedQueue>();
+		
+        while (!pila.isEmpty()) {
+            LinkedQueue temp = pila.pop();
+            
+            while (!pilaAux.isEmpty() && pilaAux.top().size() > temp.size()) {
+                pila.push(pilaAux.pop());
+            }
+            pilaAux.push(temp);
+        }
+        while (!pilaAux.isEmpty()) {
+            pila.push(pilaAux.pop());
+	}
+        }
+	
 	static PilaEnlazada<LinkedQueue> unirPilas(PilaEnlazada<LinkedQueue> p1, PilaEnlazada<LinkedQueue>p2){
 		PilaEnlazada<LinkedQueue> pout = new PilaEnlazada<LinkedQueue>();
 		
 		System.out.println(p1);
 		System.out.println(p2);
+		System.out.println("Largo de la cola top");
+		System.out.println(p1.pop().size());
+		System.out.println(p1.pop().size());
+		/*
+		si top de la pila 1 > top de la pila 2, put.push pila1.pop
+		else
+			pout.push pil2.pop
+		*/
+		/*
+		todo esto mientras el size de la pila 1 > 0,
 		
+		if size pila 1 >0 || size pila 2 > 0{
+			
+		}
+		*/
+		
+		while(p1.size() > 0 && p2.size()>0) {
+			LinkedQueue<Integer> tailColaP1 = p1.top();
+			LinkedQueue<Integer> tailColaP2 = p2.top();
+			if(tailColaP1.size() >= tailColaP2.size()) {
+				pout.push(p1.pop());
+			}
+			else {
+				pout.push(p2.pop());
+			}
+		}
+		
+		if(!p1.isEmpty()) {
+			while(p1.size()!=0) {
+				pout.push(p1.pop());
+			}
+		}
+		else if(!p2.isEmpty()) {
+			while(p2.size()!=0) {
+				pout.push(p2.pop());
+			}
+		}
+		
+		//ANTIGUO CÓDIGO
+		/*
 		if(p1.size()>=p2.size()) {
 			while(p2.size()>0) {
 				pout.push(p2.pop());
@@ -72,7 +130,7 @@ public class Main {
 		else {
 			pout.push(p1.pop());
 		}
-		
+		*/
 		return pout;
 	}
 
