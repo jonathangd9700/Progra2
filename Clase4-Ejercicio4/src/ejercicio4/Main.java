@@ -31,6 +31,8 @@ public class Main {
 		System.out.println("El tamaño de la pila 1 es:"+p1.size());
 		System.out.println("El tamaño de la pila 2 es:"+p2.size());
 		
+		ordenarPilas(p1);
+		ordenarPilas(p2);
 		PilaEnlazada<LinkedQueue> pout= unirPilas(p1,p2);
 
 		
@@ -76,6 +78,8 @@ public class Main {
 		System.out.println("Largo de la cola top");
 		System.out.println(p1.pop().size());
 		System.out.println(p1.pop().size());
+		
+		
 		/*
 		si top de la pila 1 > top de la pila 2, put.push pila1.pop
 		else
