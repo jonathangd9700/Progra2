@@ -73,13 +73,6 @@ public class Main {
 	static PilaEnlazada<LinkedQueue> unirPilas(PilaEnlazada<LinkedQueue> p1, PilaEnlazada<LinkedQueue>p2){
 		PilaEnlazada<LinkedQueue> pout = new PilaEnlazada<LinkedQueue>();
 		
-		System.out.println(p1);
-		System.out.println(p2);
-		System.out.println("Largo de la cola top");
-		System.out.println(p1.pop().size());
-		System.out.println(p1.pop().size());
-		
-		
 		/*
 		si top de la pila 1 > top de la pila 2, put.push pila1.pop
 		else
@@ -114,27 +107,6 @@ public class Main {
 				pout.push(p2.pop());
 			}
 		}
-		
-		//ANTIGUO CÓDIGO
-		/*
-		if(p1.size()>=p2.size()) {
-			while(p2.size()>0) {
-				pout.push(p2.pop());
-			}
-			}
-			else {
-				while(p1.size()>0) {
-					pout.push(p1.pop());
-				}
-			}
-		
-		if(p1.size()==0) {
-			pout.push(p2.pop());
-		}
-		else {
-			pout.push(p1.pop());
-		}
-		*/
 		return pout;
 	}
 
