@@ -233,7 +233,22 @@ public class arbolBB<E extends Comparable<E>> implements ABBTDA<E> {
 	    }
 	}
 	
+	public E min() {
+		E elemento = minimoElemento(raiz);
+		return elemento;
+	}
 	
+	private E minimoElemento(NodoABB<E> nodo) {
+		
+		if(nodo.getElemento() ==null) {
+			NodoABB<E> nodoDummyIzqPadre = nodo.getPadre(); 
+			return nodoDummyIzqPadre.getElemento();
+		}
+		else {
+			return minimoElemento(nodo.getIzq());		
+		}
+		
+	}
 }
 
 

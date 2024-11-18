@@ -20,6 +20,8 @@ public class Main {
 		//System.out.println(arbol.toStringPre());
 		//System.out.println(arbol.toStringPos());
 		
+		// EJERCICIO 3 --------------------------------------
+		/*
 		Comparable[] array = arbol.elementosPre();
 
 		for(int i = 0; i < array.length; i++) {
@@ -41,7 +43,9 @@ public class Main {
 		for(int i = 0; i < array3.length; i++) {
 			System.out.print(array3[i] + " - ");
 		}
-		
+	*/
+	
+		Integer elemento= arbol.min();
+		System.out.println(elemento);
 	}
-
 }
