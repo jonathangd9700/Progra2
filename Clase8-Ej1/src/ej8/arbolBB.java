@@ -2,6 +2,8 @@ package ej8;
 
 import java.lang.reflect.Array;
 import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.Queue;
 public class arbolBB<E extends Comparable<E>> implements ABBTDA<E> {
 	protected NodoABB<E> raiz;
 	protected int size;
@@ -233,6 +235,8 @@ public class arbolBB<E extends Comparable<E>> implements ABBTDA<E> {
 	    }
 	}
 	
+	//Ejercicio 4 ------------------------------------
+	
 	public E min() {
 		E elemento = minimoElemento(raiz);
 		return elemento;
@@ -249,6 +253,94 @@ public class arbolBB<E extends Comparable<E>> implements ABBTDA<E> {
 		}
 		
 	}
+	
+	//Ejercicio 5 ------------------------
+	
+	public String nivelesImpresos() {
+		return imprimirNiveles(raiz);
+	}
+	
+	/* INTENTO DE IMPRIMIR POR NIVELES CON RECURSION
+	private E[] imprimirNiveles(NodoABB<E> nodo) {
+		E[] array = (E[]) new Comparable[size];
+		index = 0;
+		NodoABB<E> nodoAux;
+			if(nodo.getElemento()!=null) {
+				array[index++] = nodo.getElemento();
+				if(nodo.getIzq()!=null) {
+					array[index++] = nodo.getIzq().getElemento();
+				}
+				if(nodo.getDer()!=null) {
+					array[index++] = nodo.getDer().getElemento();
+			}
+		}
+			nodoAux = nodo.getIzq();
+			imprimirNiveles(nodoAux);
+			nodoAux = nodo.getDer();
+		return array;
+	}
+	*/
+	
+	private String imprimirNiveles(NodoABB<E> nodo) {
+		Queue<NodoABB<E>> cola = new LinkedList<>();
+		cola.add(raiz);
+		String cadena = "";
+		while(!cola.isEmpty()) {
+			NodoABB<E> nodoActual = cola.poll();
+			
+			if(nodoActual.getElemento()!=null) {
+				cadena = cadena + nodoActual.getElemento() +" ";
+				if(nodoActual.getIzq()!=null) {
+					cola.add(nodoActual.getIzq());
+				}
+				if(nodoActual.getDer()!=null) {
+					cola.add(nodoActual.getDer());
+				}
+			}
+			
+		}
+		return cadena;
+	}
+	
+	//Ejercicio 6---------------------------------------
+//Cree un método que calcule la altura del ABB.
+	
+	public int alturaABB() {
+		int izq = alturaABB(raiz.getIzq());
+		int der = alturaABB(raiz.getDer());
+		
+		if (izq > der) {
+			return izq;
+		}
+		else {
+			return der;
+		}
+	}
+	
+	
+	//Calculo rama izquierda y derecha. 
+	private int alturaABB(NodoABB<E> nodo) {
+		if(nodo == null) {
+			return 0;
+		}
+		int alturaIzq = alturaABB(nodo.getIzq());
+		int alturaDer = alturaABB(nodo.getDer());
+
+	
+	if(alturaIzq > alturaDer) {
+		return 1 + alturaIzq;
+		}
+	
+	else{
+		return 1 + alturaDer;
+		}
+	
+	}
+
+	public E pruebaNodoizq() {
+		return raiz.getIzq().getElemento();
+	}
+	
 }
 
 

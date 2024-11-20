@@ -15,6 +15,10 @@ public class Main {
 		arbol.insertar(15);
 		arbol.insertar(1);
 		arbol.insertar(5);
+		arbol.insertar(4);
+		arbol.insertar(12);
+		arbol.insertar(55);
+		arbol.insertar(35);
 		
 		//System.out.println(arbol.toString());
 		//System.out.println(arbol.toStringPre());
@@ -44,8 +48,25 @@ public class Main {
 			System.out.print(array3[i] + " - ");
 		}
 	*/
-	
+		
+	//Ejercicio 4---------------------------------------------------
+		
+		/*
 		Integer elemento= arbol.min();
 		System.out.println(elemento);
+		*/
+		
+		//Ejercicio 5 ----------------------------------------------
+		
+		/*
+		String array4 = arbol.nivelesImpresos();
+		
+		System.out.println(array4);
+		*/
+		
+		//Ejercicio 6 ---------------------------------------------
+		System.out.println("La altura del arbol es: " + arbol.alturaABB());
+		
+		//System.out.println(arbol.pruebaNodoizq());
 	}
 }
