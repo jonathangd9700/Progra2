@@ -65,8 +65,29 @@ public class Main {
 		*/
 		
 		//Ejercicio 6 ---------------------------------------------
+		/*
 		System.out.println("La altura del arbol es: " + arbol.alturaABB());
-		
+		*/
 		//System.out.println(arbol.pruebaNodoizq());
+		
+		
+		ArrayDictionary<Integer,String> arrayMultiple = new ArrayDictionary<Integer,String>();
+		
+		System.out.println(arrayMultiple.isEmpty());
+		
+		arrayMultiple.put(4, "Hola");
+		arrayMultiple.put(4, "Chau");
+		arrayMultiple.put(6, "123");
+		arrayMultiple.put(6, "456");
+		Object[] arrayValues = arrayMultiple.get(4);
+		Object[] arrayValues2 = arrayMultiple.get(6);
+		for(int i = 0; i < arrayValues.length; i++) {
+			System.out.println(arrayValues[i]);
+		}
+		for(int i = 0; i < arrayValues2.length; i++) {
+			System.out.println(arrayValues2[i]);
+		}
+		System.out.println(arrayMultiple.isEmpty());
+		
 	}
 }
