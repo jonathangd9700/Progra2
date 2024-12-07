@@ -14,8 +14,19 @@ public class Main {
 		grafoDinamico.agregarVertice("B");
 		grafoDinamico.agregarVertice("C");
 		grafoDinamico.agregarVertice("J");
+		grafoDinamico.agregarVertice("Y");
+		grafoDinamico.agregarVertice("S");
+		grafoDinamico.agregarVertice("R");
+		grafoDinamico.agregarVertice("Q");
 		grafoDinamico.agregarArista("A", "B", 10);
-		grafoDinamico.agregarArista("B", "C", 5);
+		grafoDinamico.agregarArista("B", "C", 5); //puente B de A -> C
+		grafoDinamico.agregarArista("Y", "J", 3);
+		grafoDinamico.agregarArista("S", "J", 3);
+		grafoDinamico.agregarArista("R", "Q", 7);
+		grafoDinamico.agregarArista("Q", "J", 11);
+		grafoDinamico.agregarArista("A", "S", 0);
+		grafoDinamico.agregarArista("S", "C", 0); //puente S de A -> C
+		
 		
 		Object[] vertices = grafoDinamico.vertices();
 		
@@ -37,8 +48,10 @@ public class Main {
 		int peso = grafoDinamico.pesoArista("B", "C");
 		System.out.println(peso);
 		
-	
+		List<String> puentes = grafoDinamico.verticePuente("A", "C");
 		
+		System.out.println(puentes);
+
 	}
 
 }

@@ -125,8 +125,8 @@ public class GrafoDin<E> implements GrafoTDA<E> {
 		}
 		return verticesAislados;
 	}
-}
 
+/*
 public List<E> obtenerVerticesAislados(){
 	List<E> verticesAislados = new ArrayList<>();
 	E[] vertices = vertices();
@@ -145,38 +145,51 @@ public List<E> obtenerVerticesAislados(){
 	}
 	return verticesAislados;
 }
-
+*/
+	
+	/*
 public String verAux (E vert1) {
 	NodoVertice<E> nodoVert1 = encontrarVertice(vert1);
-	/*NodoVertice<E> verticeAux = origen;
+	NodoVertice<E> verticeAux = origen;
 	if(verticeAux.getVertice().equals(vert1)) {
 		return "Hola";
-	}*/
+	}
 	return ""+nodoVert1.getSigVertice().getVertice()+"";
 	
 }
-
+*/
+	///////////////PUENTEESSSSSSSSSSSSSSSSSSSSSSS///////////////////////
 public List<E> verticePuente(E vert1, E vert2){
 	List<E> lista = new ArrayList<E>();
+	int contador = 0;
 	NodoVertice<E> nodoVert1 = encontrarVertice(vert1);
 	NodoVertice<E> nodoVert2 = encontrarVertice(vert2);
-	E aux;
+	NodoVertice<E> aux = origen;
+	//Esto no sirve porque solo me conseguiría un próximo vertice puente cuando puede haber múltiples
+	//Además el sig vertice puede ser nulo. Entonces el aux empieza desde el origen y mientras sea distinto a vert1 y vert2¿2
+	//verificamos si existeArista entre vert1 y aux - y aux vert2 y viceversa. Siempre moviendo aux al sig vertice por cada iteración
 	
-	if(nodoVert1 != null && nodoVert2 !=null) {
-		//Debería ver si existe una arista entre vert1 y vert 2 ya no hay puente. Si no existe, debería tomar el sigVertice del vertice1 y de ese asignale al aux; luego ver si existe arista entra el vert1 y el
-		//verticeAux. Si existe, verifico si existe una arista del verticeAux al vert2.
-		if(!existeArista(vert1,vert2)) {
-			aux = nodoVert1.getSigVertice().getVertice();
-			if(existeArista(vert1, aux) && existeArista(aux,vert2)) {
-				lista.add(aux);
+	//contador para no llegar a la exepción que el sig vertice sea null. 
+	if (nodoVert1 == null || nodoVert2 == null) {
+	    System.out.println("Uno de los vértices no existe en el grafo.");
+	    return lista;
+	}
+	else {
+		while(contador < vertices) {
+			if( (existeArista(vert1, aux.getVertice()) && existeArista(aux.getVertice(), vert2)) || (existeArista(vert2, aux.getVertice()) && existeArista(aux.getVertice(), vert1)) ) {
+				lista.add(aux.getVertice());
 			}
+			aux = aux.getSigVertice();
+			contador++;
 		}
+	}
+
+	return lista;
 	}
 	
 	
-	return lista;
-}
-
+	
+//Metodo Auxiliar para puentes o cualquier otro método que lo necesite.
 private NodoVertice<E> encontrarVertice(E vertice){
 	NodoVertice<E> auxiliar = origen;
 	for(int i = 0; i < vertices().length; i++) {
@@ -186,6 +199,21 @@ private NodoVertice<E> encontrarVertice(E vertice){
 		auxiliar = auxiliar.getSigVertice();
 	}
 	return null;
+}
+
+public void agregarVertice2(E v) { //El vértice se inserta al inicio de la lista de nodos
+	if(encontrarVertice(v) != null) {
+		System.out.println("No se pueden agregar vertices duplicados");
+	}
+	else {
+		NodoVertice<E> aux = new NodoVertice<E>();
+		aux.setVertice(v);
+		aux.setAristas(null);
+		aux.setSigVertice(origen);
+		origen = aux;
+		vertices++;
+	}
+
 }
 
 }
