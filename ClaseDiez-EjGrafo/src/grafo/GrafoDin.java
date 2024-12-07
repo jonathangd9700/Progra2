@@ -126,3 +126,67 @@ public class GrafoDin<E> implements GrafoTDA<E> {
 		return verticesAislados;
 	}
 }
+
+public List<E> obtenerVerticesAislados(){
+	List<E> verticesAislados = new ArrayList<>();
+	E[] vertices = vertices();
+
+	for(int i = 0; i < vertices.length; i++) {
+		boolean aristaEncontrada = false;
+		for(int a = 1; a < vertices.length; a++){
+			if(existeArista(vertices[i], vertices[a]) || existeArista(vertices[a], vertices[i])){
+				aristaEncontrada = true;
+				break;
+			}
+		}
+		if(aristaEncontrada == false) {
+			verticesAislados.add(vertices[i]);
+		}
+	}
+	return verticesAislados;
+}
+
+public String verAux (E vert1) {
+	NodoVertice<E> nodoVert1 = encontrarVertice(vert1);
+	/*NodoVertice<E> verticeAux = origen;
+	if(verticeAux.getVertice().equals(vert1)) {
+		return "Hola";
+	}*/
+	return ""+nodoVert1.getSigVertice().getVertice()+"";
+	
+}
+
+public List<E> verticePuente(E vert1, E vert2){
+	List<E> lista = new ArrayList<E>();
+	NodoVertice<E> nodoVert1 = encontrarVertice(vert1);
+	NodoVertice<E> nodoVert2 = encontrarVertice(vert2);
+	E aux;
+	
+	if(nodoVert1 != null && nodoVert2 !=null) {
+		//Debería ver si existe una arista entre vert1 y vert 2 ya no hay puente. Si no existe, debería tomar el sigVertice del vertice1 y de ese asignale al aux; luego ver si existe arista entra el vert1 y el
+		//verticeAux. Si existe, verifico si existe una arista del verticeAux al vert2.
+		if(!existeArista(vert1,vert2)) {
+			aux = nodoVert1.getSigVertice().getVertice();
+			if(existeArista(vert1, aux) && existeArista(aux,vert2)) {
+				lista.add(aux);
+			}
+		}
+	}
+	
+	
+	return lista;
+}
+
+private NodoVertice<E> encontrarVertice(E vertice){
+	NodoVertice<E> auxiliar = origen;
+	for(int i = 0; i < vertices().length; i++) {
+		if(auxiliar.getVertice().equals(vertice)) {
+			return auxiliar;
+		}
+		auxiliar = auxiliar.getSigVertice();
+	}
+	return null;
+}
+
+}
+

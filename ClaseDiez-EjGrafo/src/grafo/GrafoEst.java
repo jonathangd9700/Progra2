@@ -1,5 +1,8 @@
 package grafo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GrafoEst<E> implements GrafoTDA<E> {
 	private int[][] mAdy; //Matriz de adyacencia
 	private E[] etiqs; //Vector para mapeo a índices
@@ -70,4 +73,22 @@ public class GrafoEst<E> implements GrafoTDA<E> {
 		int d = vert2Indice(v2);
 		return mAdy[o][d];
 	}
+	
+	public List<E> verticesAislados() {
+		E[] vertices = vertices();
+		boolean encontrado = false;
+		List<E> aislados = new ArrayList<E>();
+		for(int i = 0; i < cantNodos; i++) {
+			for(int j = 1; j < cantNodos-1; j++) {
+				if(existeArista(vertices[i],vertices[j]) || existeArista(vertices[j], vertices[i])) {
+					break;
+				}
+				else {
+					aislados.add(vertices[i]);
+				}
+			}
+		}
+		return aislados;
+	}
+	
 }
