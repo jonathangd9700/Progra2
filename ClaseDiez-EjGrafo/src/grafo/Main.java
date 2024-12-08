@@ -7,16 +7,18 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		/*
+		
 		GrafoDin<String> grafoDinamico = new GrafoDin<>();
 		grafoDinamico.agregarVertice("A");
 		grafoDinamico.agregarVertice("B");
 		grafoDinamico.agregarVertice("C");
 		grafoDinamico.agregarVertice("J");
+		grafoDinamico.agregarVertice("AIS");
 		grafoDinamico.agregarVertice("Y");
 		grafoDinamico.agregarVertice("S");
 		grafoDinamico.agregarVertice("R");
 		grafoDinamico.agregarVertice("Q");
+		grafoDinamico.agregarVertice("I");
 		grafoDinamico.agregarArista("A", "B", 10);
 		grafoDinamico.agregarArista("B", "C", 5); //puente B de A -> C
 		grafoDinamico.agregarArista("Y", "J", 3);
@@ -25,6 +27,7 @@ public class Main {
 		grafoDinamico.agregarArista("Q", "J", 11);
 		grafoDinamico.agregarArista("A", "S", 0);
 		grafoDinamico.agregarArista("S", "C", 0); //puente S de A -> C
+		grafoDinamico.agregarVertice("LADO");
 		
 		
 		Object[] vertices = grafoDinamico.vertices();
@@ -50,11 +53,12 @@ public class Main {
 		List<String> puentes = grafoDinamico.verticePuente("A", "C");
 		
 		System.out.println(puentes);
-		*/
+		
+		
 		
 		///////////////////////////////
 		//ESTATICO
-		
+		/*
 		GrafoEst<String> grafoEstatico = new GrafoEst<String>(); //Podría ser de char jaja
 		
 		grafoEstatico.inicializarGrafo();
@@ -75,7 +79,7 @@ public class Main {
 		
 		
 		System.out.println("Vertices Aislados: " + aislados);
-
+	*/
 	}
 
 }

@@ -109,21 +109,38 @@ public class GrafoDin<E> implements GrafoTDA<E> {
 
 	public List<E> obtenerVerticesAislados(){
 		List<E> verticesAislados = new ArrayList<>();
-		E[] vertices = vertices();
-
-		for(int i = 0; i < vertices.length; i++) {
-			boolean aristaEncontrada = false;
-			for(int a = 1; a < vertices.length; a++){
-				if(existeArista(vertices[i], vertices[a]) || existeArista(vertices[a], vertices[i])){
-					aristaEncontrada = true;
-					break;
-				}
+		NodoVertice<E> aux = origen;
+		while(aux!=null) {
+			if(aislado(aux)) {
+				verticesAislados.add(aux.getVertice());
 			}
-			if(aristaEncontrada == false) {
-				verticesAislados.add(vertices[i]);
-			}
+			aux = aux.getSigVertice();
+			
 		}
 		return verticesAislados;
+	}
+	
+	private boolean aislado(NodoVertice<E> v) {
+		NodoVertice<E> aux = origen;
+			//Acá me fijo si encontré aristas salientes. Si encontré salientes ese vertice no es aislado, por lo que paso al siguiente y devuelvo false. Pero si encontré salientes, debo verificar que no tenga entrantes
+			if(v.getAristas()!=null) {
+				return false;
+			}
+			//Acá verifico si tiene aristas entrantes. Entonces mientras el axuiliar (origen) no sea null y no sea el mismo valor que v, verifico si existe una arista entre aux y v. Si existeAriste devuelve true,
+			//retorno false, sino paso aux al sig vertice.
+			else {
+				while(aux != null && !aux.equals(v)) {
+					if(existeArista(aux.getVertice(),v.getVertice())) {
+						return false;
+					}
+					else {
+						aux = aux.getSigVertice();
+					}
+					
+				}
+			}
+		
+		return true;
 	}
 
 /*
