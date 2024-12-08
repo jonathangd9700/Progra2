@@ -73,7 +73,8 @@ public class GrafoEst<E> implements GrafoTDA<E> {
 		int d = vert2Indice(v2);
 		return mAdy[o][d];
 	}
-	
+	// ANTIGUO MÉTODO INCORRECTO DE AISLADOS
+	/*
 	public List<E> verticesAislados() {
 		E[] vertices = vertices();
 		boolean encontrado = false;
@@ -90,5 +91,29 @@ public class GrafoEst<E> implements GrafoTDA<E> {
 		}
 		return aislados;
 	}
+	*/
 	
+	//Utilizando el metodo aislado, recorro todo el índice de etiquetas y los que devuelvan true, los agrego 
+	public List<E> verticesAislados(){
+		List<E> aislados = new ArrayList<E>();
+		for(int i = 0; i < cantNodos; i++) {
+			if(aislado(etiqs[i])) {
+				aislados.add(etiqs[i]);
+			}
+		}
+		return aislados;
+	}
+	
+	//Metodo auxiliar para ver si un vertice es aislado.
+	//Recorro su fila y columna del vertice obtenido del índice de etiquetas. Si alguno de los dos es distinto de 0 devuelvo false, sabiendo que ese vértice NO es aislado. Ya que todos los pesos de sus aristas deberían
+	//ser igual a cero. Así en el peor de los casos recorrí toda la fila y columna de ese vértice para ver si es aislado o no. Ya que apenas encuentre el peso de una arista !=0 termina y devuelve false
+	private boolean aislado(E v){
+		int indice = vert2Indice(v);
+		for(int i =0; i< cantNodos; i++) {
+			if(mAdy[i][indice] != 0 || mAdy[indice][i] != 0) {
+				return false;
+			}
+		}
+		return true;
+	}
 }
