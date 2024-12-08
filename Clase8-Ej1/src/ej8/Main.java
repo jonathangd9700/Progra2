@@ -1,6 +1,8 @@
 package ej8;
 
 
+
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -20,6 +22,13 @@ public class Main {
 		arbol.insertar(55);
 		arbol.insertar(35);
 		
+		//CANTIDAD HOJAS
+
+
+		
+		System.out.println(arbol.toString());
+		//Ejercicio 2a
+		System.out.println("Cantidad de hojas: "+arbol.cantidadHojas());
 		//System.out.println(arbol.toString());
 		//System.out.println(arbol.toStringPre());
 		//System.out.println(arbol.toStringPos());

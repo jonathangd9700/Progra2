@@ -4,6 +4,8 @@ package ej8;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Queue;
+
+
 public class arbolBB<E extends Comparable<E>> implements ABBTDA<E> {
 	protected NodoABB<E> raiz;
 	protected int size;
@@ -337,6 +339,34 @@ public class arbolBB<E extends Comparable<E>> implements ABBTDA<E> {
 	
 	}
 
+	////////////////Cant hojas
+	int contadorHojas = 0;
+	private boolean esHoja(NodoABB<E> nodo) {
+		if(nodo.getIzq().getElemento() == null && nodo.getDer().getElemento() == null) {
+			return true;
+		}
+		return false;
+	}
+	
+	private void hojas(NodoABB<E> nodo) {
+
+		if(nodo.getElemento()!=null) {
+			hojas(nodo.getIzq());
+			hojas(nodo.getDer());
+			nodo.getElemento();
+			if(esHoja(nodo)) {
+				contadorHojas++;
+			}
+		}
+	}
+	
+	public int cantidadHojas() {
+		hojas(raiz);
+		int hojasAux = contadorHojas;
+		contadorHojas = 0;
+		return hojasAux;
+	}
+	
 	public E pruebaNodoizq() {
 		return raiz.getIzq().getElemento();
 	}
